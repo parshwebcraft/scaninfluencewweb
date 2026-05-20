@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* ScanfluenceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* ScanfluenceApp.swift */; };
+		100000000000000000000002 /* MockProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* MockProfileStore.swift */; };
+		100000000000000000000003 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000003 /* Haptics.swift */; };
+		100000000000000000000004 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* LiveActivityManager.swift */; };
+		100000000000000000000005 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000005 /* ContentView.swift */; };
+		100000000000000000000006 /* PremiumBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000006 /* PremiumBackgroundView.swift */; };
+		100000000000000000000007 /* BusinessCardPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000007 /* BusinessCardPreview.swift */; };
+		100000000000000000000008 /* ProfileAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000008 /* ProfileAvatarView.swift */; };
+		100000000000000000000009 /* ScanButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000009 /* ScanButton.swift */; };
+		10000000000000000000000A /* SuccessPulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000A /* SuccessPulseView.swift */; };
+		10000000000000000000000B /* SavedContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000B /* SavedContactView.swift */; };
+		10000000000000000000000C /* ContactProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* ContactProfile.swift */; };
+		10000000000000000000000D /* ScanfluenceActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000D /* ScanfluenceActivityAttributes.swift */; };
+		10000000000000000000000E /* ScanfluenceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000E /* ScanfluenceWidgetBundle.swift */; };
+		10000000000000000000000F /* ScanfluenceLiveActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000F /* ScanfluenceLiveActivityWidget.swift */; };
+		100000000000000000000010 /* IslandAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000010 /* IslandAvatarView.swift */; };
+		100000000000000000000011 /* ContactProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000C /* ContactProfile.swift */; };
+		100000000000000000000012 /* ScanfluenceActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20000000000000000000000D /* ScanfluenceActivityAttributes.swift */; };
+		100000000000000000000013 /* ScanfluenceWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 200000000000000000000013 /* ScanfluenceWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		300000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 400000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 500000000000000000000002;
+			remoteInfo = ScanfluenceWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		600000000000000000000001 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				100000000000000000000013 /* ScanfluenceWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* ScanfluenceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanfluenceApp.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* MockProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProfileStore.swift; sourceTree = "<group>"; };
+		200000000000000000000003 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		200000000000000000000004 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		200000000000000000000005 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		200000000000000000000006 /* PremiumBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumBackgroundView.swift; sourceTree = "<group>"; };
+		200000000000000000000007 /* BusinessCardPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardPreview.swift; sourceTree = "<group>"; };
+		200000000000000000000008 /* ProfileAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarView.swift; sourceTree = "<group>"; };
+		200000000000000000000009 /* ScanButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanButton.swift; sourceTree = "<group>"; };
+		20000000000000000000000A /* SuccessPulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessPulseView.swift; sourceTree = "<group>"; };
+		20000000000000000000000B /* SavedContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedContactView.swift; sourceTree = "<group>"; };
+		20000000000000000000000C /* ContactProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactProfile.swift; sourceTree = "<group>"; };
+		20000000000000000000000D /* ScanfluenceActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanfluenceActivityAttributes.swift; sourceTree = "<group>"; };
+		20000000000000000000000E /* ScanfluenceWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanfluenceWidgetBundle.swift; sourceTree = "<group>"; };
+		20000000000000000000000F /* ScanfluenceLiveActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanfluenceLiveActivityWidget.swift; sourceTree = "<group>"; };
+		200000000000000000000010 /* IslandAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandAvatarView.swift; sourceTree = "<group>"; };
+		200000000000000000000011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200000000000000000000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200000000000000000000013 /* ScanfluenceWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScanfluenceWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000014 /* Scanfluence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scanfluence.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000015 /* Scanfluence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scanfluence.entitlements; sourceTree = "<group>"; };
+		200000000000000000000016 /* ScanfluenceWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScanfluenceWidget.entitlements; sourceTree = "<group>"; };
+		200000000000000000000017 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		700000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		700000000000000000000002 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		800000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				800000000000000000000002 /* Scanfluence */,
+				800000000000000000000007 /* ScanfluenceWidget */,
+				80000000000000000000000B /* Shared */,
+				200000000000000000000017 /* README.md */,
+				80000000000000000000000E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		800000000000000000000002 /* Scanfluence */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000001 /* ScanfluenceApp.swift */,
+				800000000000000000000003 /* Models */,
+				800000000000000000000004 /* Views */,
+				800000000000000000000005 /* Activity */,
+				800000000000000000000006 /* Helpers */,
+				200000000000000000000011 /* Info.plist */,
+				200000000000000000000015 /* Scanfluence.entitlements */,
+			);
+			path = Scanfluence;
+			sourceTree = "<group>";
+		};
+		800000000000000000000003 /* Models */ = {isa = PBXGroup; children = (200000000000000000000002 /* MockProfileStore.swift */, ); path = Models; sourceTree = "<group>"; };
+		800000000000000000000004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				200000000000000000000005 /* ContentView.swift */,
+				200000000000000000000006 /* PremiumBackgroundView.swift */,
+				200000000000000000000007 /* BusinessCardPreview.swift */,
+				200000000000000000000008 /* ProfileAvatarView.swift */,
+				200000000000000000000009 /* ScanButton.swift */,
+				20000000000000000000000A /* SuccessPulseView.swift */,
+				20000000000000000000000B /* SavedContactView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		800000000000000000000005 /* Activity */ = {isa = PBXGroup; children = (200000000000000000000004 /* LiveActivityManager.swift */, ); path = Activity; sourceTree = "<group>"; };
+		800000000000000000000006 /* Helpers */ = {isa = PBXGroup; children = (200000000000000000000003 /* Haptics.swift */, ); path = Helpers; sourceTree = "<group>"; };
+		800000000000000000000007 /* ScanfluenceWidget */ = {
+			isa = PBXGroup;
+			children = (
+				800000000000000000000008 /* Widgets */,
+				800000000000000000000009 /* Views */,
+				200000000000000000000012 /* Info.plist */,
+				200000000000000000000016 /* ScanfluenceWidget.entitlements */,
+			);
+			path = ScanfluenceWidget;
+			sourceTree = "<group>";
+		};
+		800000000000000000000008 /* Widgets */ = {isa = PBXGroup; children = (20000000000000000000000E /* ScanfluenceWidgetBundle.swift */, 20000000000000000000000F /* ScanfluenceLiveActivityWidget.swift */, ); path = Widgets; sourceTree = "<group>"; };
+		800000000000000000000009 /* Views */ = {isa = PBXGroup; children = (200000000000000000000010 /* IslandAvatarView.swift */, ); path = Views; sourceTree = "<group>"; };
+		80000000000000000000000B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				80000000000000000000000C /* Models */,
+				80000000000000000000000D /* Activity */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		80000000000000000000000C /* Models */ = {isa = PBXGroup; children = (20000000000000000000000C /* ContactProfile.swift */, ); path = Models; sourceTree = "<group>"; };
+		80000000000000000000000D /* Activity */ = {isa = PBXGroup; children = (20000000000000000000000D /* ScanfluenceActivityAttributes.swift */, ); path = Activity; sourceTree = "<group>"; };
+		80000000000000000000000E /* Products */ = {isa = PBXGroup; children = (200000000000000000000014 /* Scanfluence.app */, 200000000000000000000013 /* ScanfluenceWidget.appex */, ); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		500000000000000000000001 /* Scanfluence */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 900000000000000000000003 /* Build configuration list for PBXNativeTarget "Scanfluence" */;
+			buildPhases = (
+				910000000000000000000001 /* Sources */,
+				700000000000000000000001 /* Frameworks */,
+				600000000000000000000001 /* Embed App Extensions */,
+			);
+			buildRules = ();
+			dependencies = (
+				A00000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = Scanfluence;
+			productName = Scanfluence;
+			productReference = 200000000000000000000014 /* Scanfluence.app */;
+			productType = "com.apple.product-type.application";
+		};
+		500000000000000000000002 /* ScanfluenceWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 900000000000000000000006 /* Build configuration list for PBXNativeTarget "ScanfluenceWidget" */;
+			buildPhases = (
+				910000000000000000000002 /* Sources */,
+				700000000000000000000002 /* Frameworks */,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = ScanfluenceWidget;
+			productName = ScanfluenceWidget;
+			productReference = 200000000000000000000013 /* ScanfluenceWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		400000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					500000000000000000000001 = {CreatedOnToolsVersion = 15.0; };
+					500000000000000000000002 = {CreatedOnToolsVersion = 15.0; };
+				};
+			};
+			buildConfigurationList = 900000000000000000000001 /* Build configuration list for PBXProject "Scanfluence" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base, );
+			mainGroup = 800000000000000000000001;
+			productRefGroup = 80000000000000000000000E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				500000000000000000000001 /* Scanfluence */,
+				500000000000000000000002 /* ScanfluenceWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		910000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100000000000000000000001 /* ScanfluenceApp.swift in Sources */,
+				100000000000000000000002 /* MockProfileStore.swift in Sources */,
+				100000000000000000000003 /* Haptics.swift in Sources */,
+				100000000000000000000004 /* LiveActivityManager.swift in Sources */,
+				100000000000000000000005 /* ContentView.swift in Sources */,
+				100000000000000000000006 /* PremiumBackgroundView.swift in Sources */,
+				100000000000000000000007 /* BusinessCardPreview.swift in Sources */,
+				100000000000000000000008 /* ProfileAvatarView.swift in Sources */,
+				100000000000000000000009 /* ScanButton.swift in Sources */,
+				10000000000000000000000A /* SuccessPulseView.swift in Sources */,
+				10000000000000000000000B /* SavedContactView.swift in Sources */,
+				10000000000000000000000C /* ContactProfile.swift in Sources */,
+				10000000000000000000000D /* ScanfluenceActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10000000000000000000000E /* ScanfluenceWidgetBundle.swift in Sources */,
+				10000000000000000000000F /* ScanfluenceLiveActivityWidget.swift in Sources */,
+				100000000000000000000010 /* IslandAvatarView.swift in Sources */,
+				100000000000000000000011 /* ContactProfile.swift in Sources */,
+				100000000000000000000012 /* ScanfluenceActivityAttributes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A00000000000000000000001 /* PBXTargetDependency */ = {isa = PBXTargetDependency; target = 500000000000000000000002 /* ScanfluenceWidget */; targetProxy = 300000000000000000000001 /* PBXContainerItemProxy */; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B00000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)", );
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B00000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B00000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Scanfluence/Scanfluence.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Scanfluence/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanfluence.prototype;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = APPL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B00000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Scanfluence/Scanfluence.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Scanfluence/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanfluence.prototype;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = APPL;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B00000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = ScanfluenceWidget/ScanfluenceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScanfluenceWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanfluence.prototype.widget;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = "XPC!";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B00000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = ScanfluenceWidget/ScanfluenceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ScanfluenceWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks", "@executable_path/../../Frameworks", );
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.scanfluence.prototype.widget;
+				PRODUCT_BUNDLE_PACKAGE_TYPE = "XPC!";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		900000000000000000000001 /* Build configuration list for PBXProject "Scanfluence" */ = {isa = XCConfigurationList; buildConfigurations = (B00000000000000000000001 /* Debug */, B00000000000000000000002 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		900000000000000000000003 /* Build configuration list for PBXNativeTarget "Scanfluence" */ = {isa = XCConfigurationList; buildConfigurations = (B00000000000000000000003 /* Debug */, B00000000000000000000004 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		900000000000000000000006 /* Build configuration list for PBXNativeTarget "ScanfluenceWidget" */ = {isa = XCConfigurationList; buildConfigurations = (B00000000000000000000005 /* Debug */, B00000000000000000000006 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 400000000000000000000001 /* Project object */;
+}
