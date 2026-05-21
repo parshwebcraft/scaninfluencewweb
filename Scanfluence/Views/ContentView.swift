@@ -11,57 +11,72 @@ struct ContentView: View {
     private let contact = MockProfileStore.featuredContact
 
     var body: some View {
-        ZStack {
-            PremiumBackgroundView()
+        GeometryReader { proxy in
+            let compactHeight = proxy.size.height < 820
+            let stageHeight = min(proxy.size.height * (compactHeight ? 0.37 : 0.42), compactHeight ? 310 : 380)
+            let titleSize: CGFloat = compactHeight ? 28 : 34
+            let subtitleSize: CGFloat = compactHeight ? 16 : 20
+            let bodySize: CGFloat = compactHeight ? 12 : 15
+            let verticalSpacing: CGFloat = compactHeight ? 10 : 16
 
-            VStack(spacing: 18) {
-                ShowcaseNavigation(selectedTab: $selectedTab)
-                    .padding(.top, 10)
+            ZStack {
+                PremiumBackgroundView()
 
-                Group {
-                    switch selectedTab {
-                    case .home:
-                        ShowcaseStage(contact: contact, isScanning: isScanning, didScan: didScan)
-                    case .product:
-                        ProductOverviewPanel(contact: contact)
-                    case .vCardAPI:
-                        VCardAPIPanel(contact: contact)
-                    case .showcase:
-                        AssessmentPanel()
+                VStack(spacing: verticalSpacing) {
+                    ShowcaseNavigation(selectedTab: $selectedTab, isCompact: compactHeight)
+                        .padding(.top, compactHeight ? 2 : 8)
+
+                    Group {
+                        switch selectedTab {
+                        case .home:
+                            ShowcaseStage(contact: contact, isScanning: isScanning, didScan: didScan, height: stageHeight)
+                        case .product:
+                            ProductOverviewPanel(contact: contact, height: stageHeight)
+                        case .vCardAPI:
+                            VCardAPIPanel(contact: contact, height: stageHeight)
+                        case .showcase:
+                            AssessmentPanel(height: stageHeight)
+                        }
                     }
+                    .transition(.opacity.combined(with: .scale(scale: 0.985)))
+                    .id(selectedTab)
+
+                    VStack(spacing: compactHeight ? 5 : 8) {
+                        Text(selectedTab.heroTitle)
+                            .font(.system(size: titleSize, weight: .heavy, design: .rounded))
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.78)
+
+                        Text(selectedTab.heroSubtitle)
+                            .font(.system(size: subtitleSize, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.92))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.82)
+
+                        Text(selectedTab.heroBody)
+                            .font(.system(size: bodySize, weight: .regular))
+                            .foregroundStyle(.white.opacity(0.55))
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(1)
+                            .lineLimit(compactHeight ? 2 : 3)
+                            .minimumScaleFactor(0.78)
+                            .padding(.horizontal, compactHeight ? 8 : 16)
+                    }
+                    .transition(.opacity.combined(with: .scale(scale: 0.98)))
+
+                    ScanButton(isScanning: isScanning, didScan: didScan) {
+                        startScan()
+                    }
+                    .opacity(selectedTab == .home ? 1 : 0.62)
+                    .frame(maxWidth: compactHeight ? 330 : .infinity)
                 }
-                .padding(.top, 8)
-                .transition(.opacity.combined(with: .scale(scale: 0.985)))
-                .id(selectedTab)
-
-                VStack(spacing: 8) {
-                    Text(selectedTab.heroTitle)
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
-                        .foregroundStyle(.white)
-                        .multilineTextAlignment(.center)
-
-                    Text(selectedTab.heroSubtitle)
-                        .font(.system(size: 20, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.92))
-                        .multilineTextAlignment(.center)
-
-                    Text(selectedTab.heroBody)
-                        .font(.callout)
-                        .foregroundStyle(.white.opacity(0.55))
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(2)
-                        .padding(.horizontal, 16)
-                }
-                .transition(.opacity.combined(with: .scale(scale: 0.98)))
-
-                ScanButton(isScanning: isScanning, didScan: didScan) {
-                    startScan()
-                }
-                .opacity(selectedTab == .home ? 1 : 0.62)
-                .padding(.top, 4)
+                .padding(.horizontal, compactHeight ? 16 : 18)
+                .padding(.bottom, compactHeight ? 10 : 18)
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
             }
-            .padding(.horizontal, 18)
-            .padding(.bottom, 22)
         }
         .sheet(isPresented: $showSavedSheet) {
             SavedContactView(contact: contact)
@@ -149,9 +164,10 @@ private enum ShowcaseTab: String, CaseIterable, Identifiable {
 
 private struct ShowcaseNavigation: View {
     @Binding var selectedTab: ShowcaseTab
+    let isCompact: Bool
 
     var body: some View {
-        HStack(spacing: 4) {
+        HStack(spacing: isCompact ? 2 : 4) {
             ForEach(ShowcaseTab.allCases) { tab in
                 Button {
                     Haptics.softTap()
@@ -160,12 +176,12 @@ private struct ShowcaseNavigation: View {
                     }
                 } label: {
                     Text(tab.rawValue)
-                        .font(.system(size: 13, weight: selectedTab == tab ? .semibold : .medium))
+                        .font(.system(size: isCompact ? 11 : 13, weight: selectedTab == tab ? .semibold : .medium))
                         .foregroundStyle(selectedTab == tab ? .white : .white.opacity(0.58))
                         .lineLimit(1)
                         .minimumScaleFactor(0.72)
-                        .padding(.horizontal, tab == .vCardAPI ? 11 : 13)
-                        .frame(height: 34)
+                        .padding(.horizontal, isCompact ? (tab == .vCardAPI ? 8 : 9) : (tab == .vCardAPI ? 11 : 13))
+                        .frame(height: isCompact ? 30 : 34)
                         .contentShape(Capsule())
                         .background {
                             if selectedTab == tab {
@@ -180,7 +196,7 @@ private struct ShowcaseNavigation: View {
                 .accessibilityLabel("Open \(tab.rawValue)")
             }
         }
-        .padding(4)
+        .padding(isCompact ? 3 : 4)
         .background(.ultraThinMaterial, in: Capsule())
         .overlay(Capsule().stroke(.white.opacity(0.10), lineWidth: 1))
         .shadow(color: .black.opacity(0.28), radius: 18, y: 10)
@@ -189,6 +205,7 @@ private struct ShowcaseNavigation: View {
 
 private struct ProductOverviewPanel: View {
     let contact: ContactProfile
+    let height: CGFloat
 
     var body: some View {
         ZStack {
@@ -224,12 +241,13 @@ private struct ProductOverviewPanel: View {
             }
             .padding(28)
         }
-        .frame(height: 420)
+        .frame(height: height)
     }
 }
 
 private struct VCardAPIPanel: View {
     let contact: ContactProfile
+    let height: CGFloat
 
     var body: some View {
         ZStack {
@@ -275,11 +293,13 @@ private struct VCardAPIPanel: View {
             }
             .padding(24)
         }
-        .frame(height: 420)
+        .frame(height: height)
     }
 }
 
 private struct AssessmentPanel: View {
+    let height: CGFloat
+
     private let items = [
         ("SwiftUI only", "Native views, materials, symbols, and springs"),
         ("Mock data", "Sarah Chen profile, no backend or networking"),
@@ -322,7 +342,7 @@ private struct AssessmentPanel: View {
             }
             .padding(24)
         }
-        .frame(height: 420)
+        .frame(height: height)
     }
 }
 
@@ -370,11 +390,12 @@ private struct ShowcaseStage: View {
     let contact: ContactProfile
     let isScanning: Bool
     let didScan: Bool
+    let height: CGFloat
 
     var body: some View {
         GeometryReader { proxy in
             let width = proxy.size.width
-            let phoneWidth = min(width * 0.34, 132)
+            let phoneWidth = min(width * 0.34, height * 0.42, 132)
             let stageHeight = proxy.size.height
 
             ZStack {
@@ -427,7 +448,7 @@ private struct ShowcaseStage: View {
             .animation(.spring(response: 0.62, dampingFraction: 0.74), value: isScanning)
             .animation(.spring(response: 0.72, dampingFraction: 0.78), value: didScan)
         }
-        .frame(height: 420)
+        .frame(height: height)
     }
 }
 
