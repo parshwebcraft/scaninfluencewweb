@@ -18,6 +18,7 @@ struct ContentView: View {
             let subtitleSize: CGFloat = compactHeight ? 16 : 20
             let bodySize: CGFloat = compactHeight ? 12 : 15
             let verticalSpacing: CGFloat = compactHeight ? 10 : 16
+            let afterStageGap: CGFloat = didScan ? (compactHeight ? 18 : 24) : 0
 
             ZStack {
                 PremiumBackgroundView()
@@ -40,6 +41,7 @@ struct ContentView: View {
                     }
                     .transition(.opacity.combined(with: .scale(scale: 0.985)))
                     .id(selectedTab)
+                    .padding(.bottom, afterStageGap)
 
                     VStack(spacing: compactHeight ? 5 : 8) {
                         Text(selectedTab.heroTitle)
@@ -433,8 +435,8 @@ private struct ShowcaseStage: View {
                 PhoneMockup(width: phoneWidth, dimmed: !didScan) {
                     ContactPhoneContent(contact: contact, isVisible: didScan)
                 }
-                .offset(x: phoneWidth * 0.92, y: didScan ? -2 : 22)
-                .scaleEffect(didScan ? 1.03 : 0.98)
+                .offset(x: phoneWidth * 0.88, y: didScan ? -20 : 14)
+                .scaleEffect(didScan ? 0.94 : 0.88)
                 .zIndex(didScan ? 3 : 1)
 
                 VStack {
@@ -445,6 +447,8 @@ private struct ShowcaseStage: View {
                 .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
                 .allowsHitTesting(false)
             }
+            .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
             .animation(.spring(response: 0.62, dampingFraction: 0.74), value: isScanning)
             .animation(.spring(response: 0.72, dampingFraction: 0.78), value: didScan)
         }
