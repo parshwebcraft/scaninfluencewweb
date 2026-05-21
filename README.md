@@ -19,6 +19,8 @@ Built as a UI/UX-focused prototype using SwiftUI, ActivityKit, and WidgetKit.
 - Lock screen Live Activity support
 - Smooth spring-based animations
 - Modular SwiftUI architecture
+- Reference-style showcase screen with stacked iPhone mockups
+- Glowing in-app Dynamic Island preview for the scan detected state
 
 ---
 
@@ -43,7 +45,7 @@ The project is structured into modular SwiftUI components for clarity and scalab
   - Contact profile data
 
 - Views
-  - Main screen UI
+  - Showcase-style main screen UI
   - Business card preview
   - Scan button
   - Success states
@@ -91,7 +93,7 @@ Displays:
 
 # Live Activity Flow
 
-1. User taps “Scan Card”
+1. User taps `Scan Card`
 2. Mock scan animation begins
 3. Live Activity starts
 4. Dynamic Island updates
@@ -123,6 +125,8 @@ Implemented using:
 - opacity transitions
 - smooth state updates
 - subtle haptic feedback
+- staged phone mockup transitions
+- glowing Dynamic Island scan feedback
 
 The goal was to create a premium native iOS interaction feel.
 
@@ -141,7 +145,7 @@ Recommended simulator:
 Steps:
 1. Open `Scanfluence.xcodeproj`
 2. Select iPhone Pro simulator
-3. Run the app using `⌘ + R`
+3. Run the app with Xcode's Run button or `Command + R`
 
 ---
 
