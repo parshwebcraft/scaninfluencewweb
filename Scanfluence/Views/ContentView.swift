@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var activityManager = LiveActivityManager()
 
+    @State private var selectedTab: ShowcaseTab = .home
     @State private var didScan = false
     @State private var isScanning = false
     @State private var showSavedSheet = false
@@ -14,23 +15,37 @@ struct ContentView: View {
             PremiumBackgroundView()
 
             VStack(spacing: 18) {
-                ShowcaseNavigation()
+                ShowcaseNavigation(selectedTab: $selectedTab)
                     .padding(.top, 10)
 
-                ShowcaseStage(contact: contact, isScanning: isScanning, didScan: didScan)
-                    .padding(.top, 8)
+                Group {
+                    switch selectedTab {
+                    case .home:
+                        ShowcaseStage(contact: contact, isScanning: isScanning, didScan: didScan)
+                    case .product:
+                        ProductOverviewPanel(contact: contact)
+                    case .vCardAPI:
+                        VCardAPIPanel(contact: contact)
+                    case .showcase:
+                        AssessmentPanel()
+                    }
+                }
+                .padding(.top, 8)
+                .transition(.opacity.combined(with: .scale(scale: 0.985)))
+                .id(selectedTab)
 
                 VStack(spacing: 8) {
-                    Text("SCANFLUENCE")
+                    Text(selectedTab.heroTitle)
                         .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
 
-                    Text("The future of networking is dynamic.")
+                    Text(selectedTab.heroSubtitle)
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundStyle(.white.opacity(0.92))
                         .multilineTextAlignment(.center)
 
-                    Text("Leveraging Apple's Dynamic Island API for seamless V-Card discovery.")
+                    Text(selectedTab.heroBody)
                         .font(.callout)
                         .foregroundStyle(.white.opacity(0.55))
                         .multilineTextAlignment(.center)
@@ -42,6 +57,7 @@ struct ContentView: View {
                 ScanButton(isScanning: isScanning, didScan: didScan) {
                     startScan()
                 }
+                .opacity(selectedTab == .home ? 1 : 0.62)
                 .padding(.top, 4)
             }
             .padding(.horizontal, 18)
@@ -83,32 +99,270 @@ struct ContentView: View {
     }
 }
 
+private enum ShowcaseTab: String, CaseIterable, Identifiable {
+    case home = "Home"
+    case product = "Product"
+    case vCardAPI = "V-Card API"
+    case showcase = "Showcase"
+
+    var id: String { rawValue }
+
+    var heroTitle: String {
+        switch self {
+        case .home:
+            "SCANFLUENCE"
+        case .product:
+            "CONTACT INTELLIGENCE"
+        case .vCardAPI:
+            "LOCAL MOCK DATA"
+        case .showcase:
+            "DYNAMIC ISLAND MVP"
+        }
+    }
+
+    var heroSubtitle: String {
+        switch self {
+        case .home:
+            "The future of networking is dynamic."
+        case .product:
+            "A polished scanned-card profile surface."
+        case .vCardAPI:
+            "No backend. No network. Just clean state."
+        case .showcase:
+            "Built around the assessment requirements."
+        }
+    }
+
+    var heroBody: String {
+        switch self {
+        case .home:
+            "Tap Scan Card to trigger the Live Activity and watch the in-app Dynamic Island preview transition."
+        case .product:
+            "The saved contact state highlights profile, designation, score, actions, and mutual connections."
+        case .vCardAPI:
+            "ActivityAttributes and ContentState mirror a real QR/NFC business card handoff using static data."
+        case .showcase:
+            "Focus areas: SwiftUI structure, premium UI polish, smooth animation, and tap-to-open Live Activity behavior."
+        }
+    }
+}
+
 private struct ShowcaseNavigation: View {
-    private let items = ["Home", "Product", "V-Card API", "Showcase"]
+    @Binding var selectedTab: ShowcaseTab
 
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(items, id: \.self) { item in
-                Text(item)
-                    .font(.system(size: 13, weight: item == "Home" ? .semibold : .medium))
-                    .foregroundStyle(item == "Home" ? .white : .white.opacity(0.58))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
-                    .padding(.horizontal, item == "V-Card API" ? 12 : 14)
-                    .frame(height: 34)
-                    .background {
-                        if item == "Home" {
-                            Capsule()
-                                .fill(.white.opacity(0.16))
-                                .overlay(Capsule().stroke(.white.opacity(0.12), lineWidth: 1))
-                        }
+            ForEach(ShowcaseTab.allCases) { tab in
+                Button {
+                    Haptics.softTap()
+                    withAnimation(.spring(response: 0.42, dampingFraction: 0.78)) {
+                        selectedTab = tab
                     }
+                } label: {
+                    Text(tab.rawValue)
+                        .font(.system(size: 13, weight: selectedTab == tab ? .semibold : .medium))
+                        .foregroundStyle(selectedTab == tab ? .white : .white.opacity(0.58))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.72)
+                        .padding(.horizontal, tab == .vCardAPI ? 11 : 13)
+                        .frame(height: 34)
+                        .contentShape(Capsule())
+                        .background {
+                            if selectedTab == tab {
+                                Capsule()
+                                    .fill(.white.opacity(0.16))
+                                    .overlay(Capsule().stroke(.white.opacity(0.12), lineWidth: 1))
+                                    .shadow(color: .white.opacity(0.08), radius: 8)
+                            }
+                        }
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Open \(tab.rawValue)")
             }
         }
         .padding(4)
         .background(.ultraThinMaterial, in: Capsule())
         .overlay(Capsule().stroke(.white.opacity(0.10), lineWidth: 1))
         .shadow(color: .black.opacity(0.28), radius: 18, y: 10)
+    }
+}
+
+private struct ProductOverviewPanel: View {
+    let contact: ContactProfile
+
+    var body: some View {
+        ZStack {
+            PanelBackground()
+
+            VStack(spacing: 18) {
+                ProfileAvatarView(initials: contact.initials, size: 82)
+
+                VStack(spacing: 6) {
+                    Text(contact.name)
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white)
+
+                    Text("\(contact.designation) at \(contact.company)")
+                        .font(.headline)
+                        .foregroundStyle(.white.opacity(0.68))
+                }
+
+                MetricRow()
+                    .frame(maxWidth: 280)
+
+                HStack(spacing: 10) {
+                    MiniActionButton(title: "Call", systemImage: "phone.fill")
+                    MiniActionButton(title: "LinkedIn", systemImage: "person.crop.square.fill")
+                }
+
+                Label(contact.status, systemImage: "checkmark.seal.fill")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.teal)
+                    .padding(.horizontal, 18)
+                    .frame(height: 44)
+                    .background(.teal.opacity(0.14), in: Capsule())
+            }
+            .padding(28)
+        }
+        .frame(height: 420)
+    }
+}
+
+private struct VCardAPIPanel: View {
+    let contact: ContactProfile
+
+    var body: some View {
+        ZStack {
+            PanelBackground()
+
+            VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                    Label("Mock vCard Payload", systemImage: "curlybraces")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(.white)
+
+                    Spacer()
+
+                    Text("Local")
+                        .font(.caption.weight(.bold))
+                        .foregroundStyle(.black)
+                        .padding(.horizontal, 10)
+                        .frame(height: 24)
+                        .background(.teal, in: Capsule())
+                }
+
+                VStack(alignment: .leading, spacing: 9) {
+                    CodeLine(key: "name", value: contact.name)
+                    CodeLine(key: "designation", value: contact.designation)
+                    CodeLine(key: "company", value: contact.company)
+                    CodeLine(key: "status", value: contact.status)
+                    CodeLine(key: "activityPhase", value: "saving -> saved")
+                    CodeLine(key: "deeplink", value: "scanfluence://contact/sarah-chen")
+                }
+                .padding(18)
+                .background(.black.opacity(0.52), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(.white.opacity(0.09), lineWidth: 1)
+                }
+
+                Spacer()
+
+                Text("The app sends compact ActivityKit state updates. WidgetKit renders compact, expanded, minimal, and lock screen Live Activity layouts.")
+                    .font(.callout)
+                    .foregroundStyle(.white.opacity(0.62))
+                    .lineSpacing(3)
+            }
+            .padding(24)
+        }
+        .frame(height: 420)
+    }
+}
+
+private struct AssessmentPanel: View {
+    private let items = [
+        ("SwiftUI only", "Native views, materials, symbols, and springs"),
+        ("Mock data", "Sarah Chen profile, no backend or networking"),
+        ("Dynamic Island", "Compact, expanded, minimal, and lock screen states"),
+        ("Tap interaction", "Widget URL opens scanfluence://contact/sarah-chen")
+    ]
+
+    var body: some View {
+        ZStack {
+            PanelBackground()
+
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Assessment Coverage")
+                    .font(.title2.weight(.bold))
+                    .foregroundStyle(.white)
+
+                ForEach(items, id: \.0) { item in
+                    HStack(spacing: 12) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.title3.weight(.semibold))
+                            .foregroundStyle(.teal)
+
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(item.0)
+                                .font(.headline.weight(.semibold))
+                                .foregroundStyle(.white)
+
+                            Text(item.1)
+                                .font(.caption)
+                                .foregroundStyle(.white.opacity(0.58))
+                        }
+
+                        Spacer()
+                    }
+                    .padding(14)
+                    .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                }
+
+                Spacer()
+            }
+            .padding(24)
+        }
+        .frame(height: 420)
+    }
+}
+
+private struct PanelBackground: View {
+    var body: some View {
+        RoundedRectangle(cornerRadius: 28, style: .continuous)
+            .fill(
+                LinearGradient(
+                    colors: [.white.opacity(0.16), .white.opacity(0.06), .black.opacity(0.78)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
+                    .stroke(.white.opacity(0.13), lineWidth: 1)
+            }
+            .shadow(color: .black.opacity(0.48), radius: 30, y: 18)
+    }
+}
+
+private struct CodeLine: View {
+    let key: String
+    let value: String
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Text("\"\(key)\"")
+                .font(.system(size: 13, weight: .semibold, design: .monospaced))
+                .foregroundStyle(.cyan)
+            Text(":")
+                .font(.system(size: 13, weight: .regular, design: .monospaced))
+                .foregroundStyle(.white.opacity(0.38))
+            Text("\"\(value)\"")
+                .font(.system(size: 13, weight: .regular, design: .monospaced))
+                .foregroundStyle(.white.opacity(0.82))
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+            Spacer(minLength: 0)
+        }
     }
 }
 

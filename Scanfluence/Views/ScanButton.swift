@@ -15,7 +15,8 @@ struct ScanButton: View {
                     .font(.headline.weight(.semibold))
             }
             .foregroundStyle(.black)
-            .frame(maxWidth: .infinity)            .frame(height: 58)
+            .frame(maxWidth: .infinity)
+            .frame(height: 58)
             .background(.white, in: Capsule())
             .overlay(alignment: .trailing) {
                 if isScanning {
